@@ -22,7 +22,7 @@ feature_explanations = {
     'FLAG_OWN_CAR': "🚗 Owns a car? May reflect stability.",
     'CNT_FAM_MEMBERS': "👨‍👩‍👧‍👦 Number of family members.",
     'AMT_GOODS_PRICE': "🛒 Price of goods being purchased.",
-    'REGION_POPULATION_RELATIVE': "🏘 Population density in applicant's region.",
+    'REGION_POPULATION_RELATIVE': "🏘️ Population density in applicant's region.",
     'CNT_CHILDREN': "🧒 Number of children.",
     'EXT_SOURCE_2': "📊 External credit score.",
     'AMT_INCOME_TOTAL': "💰 Total annual income.",
@@ -35,7 +35,7 @@ st.title("💸 Loan Default Prediction App")
 # Sidebar explanations
 st.sidebar.header("Feature Descriptions")
 for feature in selected_features:
-    st.sidebar.markdown(f"{feature}: {feature_explanations.get(feature, '')}")
+    st.sidebar.markdown(f"*{feature}*: {feature_explanations.get(feature, '')}")
 
 # Input form
 st.header("Enter Applicant Information")
@@ -51,7 +51,7 @@ with col1:
     user_input['AMT_GOODS_PRICE'] = st.number_input("🛒 AMT_GOODS_PRICE", min_value=0, step=1000)
 
 with col2:
-    user_input['REGION_POPULATION_RELATIVE'] = st.number_input("🏘 REGION_POPULATION_RELATIVE", 0.0, 1.0, 0.5, 0.01)
+    user_input['REGION_POPULATION_RELATIVE'] = st.number_input("🏘️ REGION_POPULATION_RELATIVE", 0.0, 1.0, 0.5, 0.01)
     user_input['CNT_CHILDREN'] = st.number_input("🧒 CNT_CHILDREN", 0, step=1)
     user_input['EXT_SOURCE_2'] = st.slider("📊 EXT_SOURCE_2", 0.0, 1.0, 0.5)
     user_input['AMT_INCOME_TOTAL'] = st.number_input("💰 AMT_INCOME_TOTAL", min_value=0, step=1000)
@@ -73,9 +73,14 @@ scaled_input = scaler.transform(input_df[selected_features])
 # Prediction
 if st.button("Predict"):
     prediction = xgb_model.predict(scaled_input)
-    proba = xgb_model.predict_proba(scaled_input)[0][1]
+    proba = xgb_model.predict_proba(scaled_input)[0]  # [Low Risk prob, High Risk prob]
 
+    # Show probabilities
+    st.markdown(f"✅ **Probability of Low Risk:** {proba[0]:.2f}")
+    st.markdown(f"⚠️ **Probability of High Risk:** {proba[1]:.2f}")
+
+    # Show risk message
     if prediction[0] == 1:
-        st.markdown(f"<div style='padding:20px; background-color:#FFCCCC; color:#990000; border-radius:10px;'>⚠ High Risk of Default! (Probability: {proba:.2f})</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='padding:20px; background-color:#FFCCCC; color:#990000; border-radius:10px;'>High Risk of Default!</div>", unsafe_allow_html=True)
     else:
-        st.markdown(f"<div style='padding:20px; background-color:#CCFFCC; color:#006600; border-radius:10px;'>✅ Low Risk of Default (Probability: {proba:.2f})</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='padding:20px; background-color:#CCFFCC; color:#006600; border-radius:10px;'>Low Risk of Default</div>", unsafe_allow_html=True)
