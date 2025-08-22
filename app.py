@@ -30,7 +30,7 @@ feature_explanations = {
 }
 
 # App title
-st.title("💸 Loan Default Prediction App")
+st.title("💸 Bank Loan Default Prediction App")
 
 # Sidebar explanations
 st.sidebar.header("Feature Descriptions")
