@@ -5,7 +5,7 @@ This project focuses on predicting the likelihood of loan default for applicants
 ---
 
 ## 🔗 Interactive Streamlit App
-Check the live app here: [💻 Loan Default Prediction App](https://bank-loan-default-predictor.streamlit.app/)
+Check the live app here: [💻 Bank Loan Default Prediction App](https://bank-loan-default-predictor.streamlit.app/)
 
 ---
 
