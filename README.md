@@ -119,11 +119,11 @@ The app shows both probabilities (for High risk and Low risk) for deeper insight
 
 ## 📌 Notes
 
-Dataset was imbalanced, so SMOTE was applied to balance classes
+-Dataset was imbalanced, so SMOTE was applied to balance classes
 
-Top 10 features were selected to simplify the app without losing predictive power
+-Top 10 features were selected to simplify the app without losing predictive power
 
-Model evaluation metrics included Accuracy, Precision, Recall, F1 Score, and AUC
+-Model evaluation metrics included Accuracy, Precision, Recall, F1 Score, and AUC
 
 
 
