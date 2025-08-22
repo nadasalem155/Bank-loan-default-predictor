@@ -1,4 +1,4 @@
-# 💸 Bank-Loan-default Predictor 
+# 💸 Bank-Loan-default Prediction 
 
 This project focuses on predicting the likelihood of loan default for applicants using machine learning. The goal is to build a reliable model and an interactive web app to help banks or financial institutions evaluate risk.  
 
