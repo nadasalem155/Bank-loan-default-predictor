@@ -89,7 +89,7 @@ Check the live app here: [💻 Bank Loan Default Prediction App](https://bank-lo
 
 ## 📈 How to Run the App
 1. Install dependencies:  
-```bash
+
 pip install streamlit scikit-learn xgboost pandas numpy joblib
 
 2. Run the Streamlit app:
@@ -105,7 +105,7 @@ streamlit run app.py
 
 ---
 
-🔮 Results Interpretation
+##🔮 Results Interpretation
 
 ✅ Low Risk: Applicant is unlikely to default
 
@@ -117,7 +117,7 @@ The app shows both probabilities (for High risk and Low risk) for deeper insight
 
 ---
 
-📌 Notes
+## 📌 Notes
 
 Dataset was imbalanced, so SMOTE was applied to balance classes
 
